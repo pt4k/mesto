@@ -128,6 +128,16 @@
     background-color: #FFFFFF;
 }
 
-.element__button-img {
-    
+.footer {
+    max-width: 880px;
+    margin: 0 auto;
+    padding-bottom: 60px;
+}
+
+.footer__text {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.22;
+    color: #545454;
+    margin: 0;
 }
