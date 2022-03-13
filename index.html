@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="Страница о местах в России">
+    <meta name="keywords" content="Карачаевск, Эльбрус, Домбай">
     <meta name="author" content="Юрий Пищенко">
     <link rel="stylesheet" href="./page/index.css">
     <title>Mesto</title>
@@ -15,19 +15,21 @@
 
     <header class="header">
         <img src="./images/Vector.svg" alt="Логотип Место" class="logo">
-        <div class="line"></div>
+        <div class="header__line"></div>
     </header>
 
     <main class="content">
+
         <section class="profile">
-            <img src="./images/zhak_iv_kusto.jpeg" alt="Жак-Ив Кусто" class="avatar">
-            <div class="profile-info">
-                <h1 class="profile-info__title">Жак-Ив Кусто</h1>
-                <p class="profile-info__text">Исследователь океана</p>
+            <img src="./images/zhak_iv_kusto.jpeg" alt="Жак-Ив Кусто" class="profile__avatar">
+            <div class="profile__info">
+                <h1 class="profile__title">Жак-Ив Кусто</h1>
+                <p class="profile__text">Исследователь океана</p>
             </div>
-            <button class="edit-button"><img src="./images/edit_button.svg" alt="Карандаш"></button>
-            <button class="add-button"><img src="./images/add_button.svg" alt="Плюс"></button>
+            <button class="profile__edit-button"><img src="./images/edit_button.svg" alt="Карандаш"></button>
+            <button class="profile__add-button"><img src="./images/add_button.svg" alt="Плюс"></button>
         </section>
+
         <section class="elements">
             <figure class="element">
                 <img src="./images/karachaevsk.jpeg" alt="Карачаевск" class="element__img">
@@ -67,6 +69,7 @@
                     <button class="element__button"><img src="./images/like.svg" alt="like"></button></figcaption>
             </figure>
         </section>
+
     </main>
 
     <footer class="footer">
