@@ -3,3 +3,9 @@
     border-radius: 60px;
     margin: 3.75px 30px 3.75px 22.5px;
 }
+
+@media screen and (max-width: 540px) {
+    .profile__avatar {
+        margin: 0 auto 26px;
+    }
+}

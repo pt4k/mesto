@@ -7,3 +7,10 @@
     background-color: #000000;
     margin: 35px 0 35px auto;
 }
+
+@media screen and (max-width: 540px) {
+    .profile__add-button {
+        width: 282px;
+        margin: 36px 0;
+    }
+}
