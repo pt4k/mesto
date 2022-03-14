@@ -3,12 +3,14 @@
     font-size: 42px;
     line-height: 1.14;
     text-align: center;
-    margin: 22px 18px 16px 0;
+    margin: 0 18px 0 0;
+    grid-area: title;
 }
 
 @media screen and (max-width: 540px) {
     .profile__title {
         font-size: 27px;
-        margin: 0 auto 14px;
+        line-height: 1.22;
+        margin-right: 10px;
     }
 }

@@ -2,7 +2,8 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 1.22;
-    margin: 0;
+    margin: 16px 0 0;
+    grid-area: text;
 }
 
 @media screen and (max-width: 540px) {
@@ -10,5 +11,6 @@
         font-size: 14px;
         line-height: 1.21px;
         text-align: center;
+        margin-top: 14px;
     }
 }
