@@ -1,0 +1,9 @@
+.popup__form-button {
+    margin: 18px 36px 37px;
+}
+
+@media screen and (max-width: 540px) {
+    .popup__form-button {
+        margin: 15px 22px 25px;
+    }
+}
