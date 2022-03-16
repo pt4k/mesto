@@ -80,18 +80,10 @@
     <div class="popup">
         <div class="popup__window">
             <h2 class="popup__title">Редактировать профиль</h2> 
-            <form>
-                <button class="popup__close-button" type="reset"></button>
-            </form>               
+            <button class="popup__close-button" type="reset"></button>
             <form class="popup__form">
-                <label for="first-name"></label>
-                <input class="popup__item" type="text" id="first-name" name="firstname" placeholder="Имя" required>
-            </form>
-            <form class="popup__form">
-                <label for="about"></label>
-                <input class="popup__item" type="text" id="about" name="about" placeholder="О себе" required>
-            </form>
-            <form class="popup__form-button">
+                <input class="popup__input popup__input_el_first-name" type="text" name="firstname" placeholder="Жак-Ив Кусто" required>
+                <input class="popup__input popup__input_el_about" type="text" name="about" placeholder="Исследователь океана" required>
                 <button class="popup__save-button" type="submit">Сохранить</button>
             </form>
         </div>
