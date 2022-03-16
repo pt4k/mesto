@@ -21,8 +21,8 @@
     content: ' ';
     height: 22px;
     border: 1.5px solid #fff;
-    top: 12px;
-    left: 74px;
+    top: 25%;
+    left: 50%;
     background: #fff;
 }
 
@@ -32,9 +32,16 @@
     height: 22px;
     border: 1.5px solid #fff;
     background: #fff;
-    top: 12px;
-    left: 74px;
+    top: 25%;
+    left: 50%;
     transform: rotate(90deg);
+}
+
+@media screen and (max-width: 767px) {
+    .profile__add-button {
+        width: 103px;
+        margin: auto 20px;
+    }
 }
 
 @media screen and (max-width: 540px) {
