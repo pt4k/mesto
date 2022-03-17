@@ -6,7 +6,7 @@
     box-sizing: border-box;
     margin: 15px 0 0;
     padding: 0;
-    cursor: url(../../../images/cursor.svg), pointer;
+    cursor: pointer;
     grid-area: edit-button;
     transition: opacity .3s ease;
 }
