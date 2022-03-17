@@ -1,10 +1,12 @@
 .element__button {
+    position: relative;
     width: 22px;
     height: 19px;
     margin: 17px 20px 25px 0;
     padding: 0;
     border: 0;
-    background: #fff url(../../../images/like.svg);
+    background: #fff;
+    background-image: url(../../../images/like.svg);
     cursor: pointer;
     transition: background-image .3s ease;
 }
