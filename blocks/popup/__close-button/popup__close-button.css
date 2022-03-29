@@ -47,11 +47,13 @@
 @media screen and (max-width: 540px) {
     .popup__close-button::before {
         height: 20px;
+        border: 1px solid #fff;
     }
 }
 
 @media screen and (max-width: 540px) {
     .popup__close-button::after {
         height: 20px;
+        border: 1px solid #fff;
     }
 }

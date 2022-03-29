@@ -15,76 +15,44 @@
 
     <header class="header">
         <img src="./images/Vector.svg" alt="Логотип Место" class="logo">
-        <div class="header__line"></div>
     </header>
 
     <main class="content">
 
         <section class="profile">
-            <img src="./images/zhak_iv_kusto.jpeg" alt="Жак-Ив Кусто" class="profile__avatar">
+            <img src="./images/zhak_iv_kusto.jpeg" alt="Аватар" class="profile__avatar">
             <div class="profile__info">
                 <h1 class="profile__title">Жак-Ив Кусто</h1>
                 <p class="profile__text">Исследователь океана</p>
-                <button class="profile__edit-button"><img src="./images/edit_button.svg" alt="Карандаш"></button>
+                <button class="profile__edit-button" type="button"></button>
             </div>
-            <button class="profile__add-button"></button>
+            <button aria-label="add" class="profile__add-button" type="button"></button>
         </section>
 
-        <section class="elements">
-            <figure class="element">
-                <img src="./images/karachaevsk.jpeg" alt="Карачаевск" class="element__img">
-                <figcaption class="element__caption">
-                    <p class="element__text">Карачаевск</p>
-                    <button class="element__button"></button>
-                </figcaption>
-            </figure>
-            <figure class="element">
-                <img src="./images/gora_El'brus.jpeg" alt="Вид на гору Эльбрус" class="element__img">
-                <figcaption class="element__caption">
-                    <p class="element__text">Гора Эльбрус</p>
-                    <button class="element__button"></button>
-                </figcaption>
-            </figure>
-            <figure class="element">
-                <img src="./images/Dombai.jpeg" alt="Вид на горы Домбая" class="element__img">
-                <figcaption class="element__caption">
-                    <p class="element__text">Домбай</p>
-                    <button class="element__button"></button>
-                </figcaption>
-            </figure>
-            <figure class="element">
-                <img src="./images/gora_El'brus.jpeg" alt="Вид на гору Эльбрус" class="element__img">
-                <figcaption class="element__caption">
-                    <p class="element__text">Гора Эльбрус</p>
-                    <button class="element__button"></button>
-                </figcaption>
-            </figure>
-            <figure class="element">
-                <img src="./images/Dombai.jpeg" alt="Вид на горы Домбая" class="element__img">
-                <figcaption class="element__caption">
-                    <p class="element__text">Домбай</p>
-                    <button class="element__button"></button>
-                </figcaption>
-            </figure>
-            <figure class="element">
-                <img src="./images/karachaevsk.jpeg" alt="Карачаевск" class="element__img">
-                <figcaption class="element__caption">
-                    <p class="element__text">Карачаево-Черкессия</p>
-                    <button class="element__button"></button>
-                </figcaption>
-            </figure>
-        </section>
+        <section class="elements"></section>
 
     </main>
 
-    <div class="popup">
+    <div class="popup popup_edit_profile">
         <div class="popup__window">
             <h2 class="popup__title">Редактировать профиль</h2> 
-            <button class="popup__close-button" type="reset"></button>
-            <form class="popup__form">
-                <input class="popup__input popup__input_el_first-name" type="text" name="firstname" placeholder="Жак-Ив Кусто" required>
-                <input class="popup__input popup__input_el_about" type="text" name="about" placeholder="Исследователь океана" required>
+            <button class="popup__close-button popup__close-button_edit_profile" type="button" aria-label="close"></button>
+            <form class="popup__form popup__form_type_profile" name="popupForm">
+                <input class="popup__input popup__input_el_first-name" type="text" name="firstname" placeholder="Имя" required>
+                <input class="popup__input popup__input_el_about" type="text" name="about" placeholder="О себе" required>
                 <button class="popup__save-button" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup popup_add_card">
+        <div class="popup__window">
+            <h2 class="popup__title">Новое место</h2> 
+            <button class="popup__close-button popup__close-button_add_card" type="button" aria-label="add"></button>
+            <form class="popup__form popup__form_type_card" name="popupForm">
+                <input class="popup__input popup__input_el_place" type="text" name="place" placeholder="Название" required>
+                <input class="popup__input popup__input_el_link" type="text" name="link" placeholder="Ссылка на картинку" required>
+                <button class="popup__save-button " type="submit">Сохранить</button>
             </form>
         </div>
     </div>
@@ -92,6 +60,16 @@
     <footer class="footer">
         <p class="footer__text">© 2022 Mesto Russia</p>
     </footer>
+
+    <template class="card-template">
+        <figure class="element">
+            <img src="" alt="" class="element__img">
+            <figcaption class="element__caption">
+                <h2 class="element__text"></h2>
+                <button class="element__button-like" type="button" aria-label="like"></button>
+            </figcaption>
+        </figure>
+    </template>
 
     <script src="./scripts/index.js"></script>
 </body>

@@ -2,4 +2,5 @@
     font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
     max-width: 880px;
     margin: 0 auto;
+    border-bottom: 1px solid rgba(84, 84, 84, .7);
 }

@@ -3,6 +3,9 @@
     height: 50px;
     margin: 18px 0 37px;
     font-family: inherit;
+    font-size: 18px;
+    line-height: 1.2px;
+    text-align: center;
     color: #fff;
     background-color: #000;
     border-radius: 2px;
@@ -18,6 +21,7 @@
 @media screen and (max-width: 540px) {
     .popup__save-button {
         max-width: 238px;
+        font-size: 14px;
         margin: 15px 0 25px;
     }
 }

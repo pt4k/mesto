@@ -1,8 +1,8 @@
-.element__button {
+.element__button-like {
     position: relative;
     width: 22px;
     height: 19px;
-    margin: 17px 20px 25px 0;
+    margin: 21px 20px 25px 0;
     padding: 0;
     border: 0;
     background: #fff;
@@ -11,10 +11,11 @@
     transition: background-image .3s ease;
 }
 
-.element__button:hover {
-    background-image: url(../../../images/like_hover.svg);
+.element__button-like:hover {
+    opacity: 0.5;
 }
 
-.element__button:active {
-   background-image: url(../../../images/like_black.svg);
+.element__button-like:active {
+    background-image: url(../../../images/like_black.svg);
+    opacity: 1;
 }
