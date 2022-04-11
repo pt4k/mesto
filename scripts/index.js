@@ -31,7 +31,7 @@ const titleCard = document.querySelector('.element__text');
 
 //функция для открытия попапа редактирования профиля 
 const openPopupEditProfile = (popupElementProfile) => {
-  popupElementProfile.classList.toggle('popup_opened');
+  openPopup(popupElementProfile);
 
   nameInput.value = profileName.textContent; 
   jobInput.value = profileJob.textContent; 
@@ -76,7 +76,7 @@ function createCard (name, link) {
     card.remove();
   });
   card.querySelector('.element__img').addEventListener('click', (evt) => {
-    popupView.classList.add('popup_opened')
+    openPopup(popupView);
     const nameImg = evt.target.alt;
     const linkImg = evt.target.src;
 
