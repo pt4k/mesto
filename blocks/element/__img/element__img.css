@@ -6,4 +6,10 @@
     display: block;  
     object-fit: cover;
     object-position: center;
+    cursor: pointer;
+    transition: opacity .3s ease;
+}
+
+.element__img:hover {
+    opacity: .5;
 }
