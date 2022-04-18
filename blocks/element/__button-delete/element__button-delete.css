@@ -11,6 +11,7 @@
     background-image: url(../../../images/del.svg);
     cursor: pointer;
     transition: background-image .3s ease;
+    z-index: 1;
 }
 
 .element__button-delete:hover {
