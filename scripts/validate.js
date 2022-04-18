@@ -1,11 +1,13 @@
+const enableValidation = (settings) => {
+
 //функция которая показывает ошибку
 const showInputError = (formElement, inputElement, errorMessage) => {
     // Находим элемент ошибки внутри самой функции
     const errorElement = formElement.querySelector(`.${inputElement.name}-input-error`);
     
-    inputElement.classList.add('popup__input_type_error');
+    inputElement.classList.add(settings.inputErrorClass);
     errorElement.textContent = errorMessage;
-    errorElement.classList.add('popup__input-error_active');
+    errorElement.classList.add(settings.errorClass);
   };
 
 //функция скрывает ошибку 
@@ -13,8 +15,8 @@ const hideInputError = (formElement, inputElement) => {
     // Находим элемент ошибки
     const errorElement = formElement.querySelector(`.${inputElement.name}-input-error`);
 
-    inputElement.classList.remove('popup__input_type_error');
-    errorElement.classList.remove('popup__input-error_active');
+    inputElement.classList.remove(settings.inputErrorClass);
+    errorElement.classList.remove(settings.errorClass);
     errorElement.textContent = '';
   };
 
@@ -44,21 +46,21 @@ const toggleButtonState = (inputList, buttonElement) => {
     // Если есть хотя бы один невалидный инпут
     if (hasInvalidInput(inputList)) {
       // сделай кнопку неактивной
-      buttonElement.classList.add('popup__save-button_inactive');
+      buttonElement.classList.add(settings.inactiveButtonClass);
       buttonElement.disabled = true;
     } else {
       // иначе сделай кнопку активной
-      buttonElement.classList.remove('popup__save-button_inactive');
+      buttonElement.classList.remove(settings.inactiveButtonClass);
       buttonElement.disabled = false;
     };
   };
 
  const setEventListeners = (formElement) => {
     // Находим все поля внутри формы, и делаем из них массив
-    const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+    const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
 
     // Найдём в текущей форме кнопку отправки
-    const buttonElement = formElement.querySelector('.popup__save-button');
+    const buttonElement = formElement.querySelector(settings.submitButtonSelector);
 
     // Вызовем toggleButtonState, чтобы не ждать ввода данных в поля
     toggleButtonState(inputList, buttonElement);
@@ -76,9 +78,9 @@ const toggleButtonState = (inputList, buttonElement) => {
     });
   };
 
-  const enableValidation = () => {
+  
     // Найдём все формы с указанным классом в DOM, сделаем из них массив
-    const formList = Array.from(document.querySelectorAll('.popup__form'));
+    const formList = Array.from(document.querySelectorAll(settings.formSelector));
   
     // Переберём полученную коллекцию
     formList.forEach((formElement) => {
@@ -91,26 +93,5 @@ const toggleButtonState = (inputList, buttonElement) => {
       setEventListeners(formElement);
     });
   };
-  
-  // Вызовем функцию
-  enableValidation();
 
-// функции закрятия попапов по клику и нажатия по esc
-  const closePopupKey = (evt) => {
-    const openPopup = document.querySelector('.popup_opened');
-
-    if (evt.key === 'Escape'){
-      closePopup(openPopup);
-    };
-  };
-
-  const closePopupClick = (evt) => {
-    const openPopup = document.querySelector('.popup_opened');
-
-    if (evt.target.classList.contains('popup')) {
-        closePopup(openPopup);
-    };
-  };
-
-document.addEventListener('click', closePopupClick);
-document.addEventListener('keydown', closePopupKey);
+enableValidation(validationConfig);

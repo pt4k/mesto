@@ -29,6 +29,15 @@ const titleViewCard = popupView.querySelector('.popup__title_view-card');
 const imgCard = document.querySelector('.element__img');
 const titleCard = document.querySelector('.element__text');
 
+const validationConfig = ({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+});
+
 //функция для открытия попапа редактирования профиля 
 const openPopupEditProfile = (popupElementProfile) => {
   openPopup(popupElementProfile);
@@ -36,13 +45,33 @@ const openPopupEditProfile = (popupElementProfile) => {
   nameInput.value = profileName.textContent; 
   jobInput.value = profileJob.textContent; 
 }
+
+
 //функции открытия и закрытия попапов
-const openPopup = (currentPopup) => {
+function openPopup (currentPopup) {
   currentPopup.classList.toggle('popup_opened');
+  document.addEventListener('keydown', closeByEsc);
 };
-const closePopup = (currentPopup) => {
+function closePopup (currentPopup) {
   currentPopup.classList.toggle('popup_opened');
+  document.removeEventListener('keydown', closeByEsc);
 };
+
+// функции закрятия попапов по клику и нажатия по esc
+function closeByEsc (evt) {
+  if (evt.key === 'Escape'){
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  };
+};
+
+function closeByClick (evt) {
+  if (evt.target.classList.contains('popup')) {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  };
+};
+
 const handleClickOpen = (currentPopup) => () => openPopup(currentPopup);
 const handleClickClose = (currentPopup) => () => closePopup(currentPopup);
 //функция для лайка
@@ -91,12 +120,11 @@ function createCard (name, link) {
 //функция добавления карточки
 const addCard = (event) => {
   event.preventDefault();
-
   const newCard = createCard(placeInput.value, linkInput.value);
 
-  closePopup(popupElementCard);
-  formElementAddCard.reset();
   cardContainer.prepend(newCard);
+  formElementAddCard.reset();  
+  closePopup(popupElementCard);
 };
 
 // Добавляю слушатели событий на кнопки открытия/закрытия попапа и отправки формы
@@ -107,3 +135,6 @@ formElementAddCard.addEventListener('submit', addCard);
 addButton.addEventListener('click', handleClickOpen(popupElementCard)); 
 closeButtonPopupAddCard.addEventListener('click', handleClickClose(popupElementCard)); 
 closeButtonPopupViewCard.addEventListener('click', handleClickClose(popupView));
+popupElementProfile.addEventListener('click', closeByClick);
+popupElementCard.addEventListener('click', closeByClick);
+popupView.addEventListener('click', closeByClick);
