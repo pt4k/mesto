@@ -28,15 +28,16 @@ const cardTemplate = document.querySelector('.card-template').content;
 const titleViewCard = popupView.querySelector('.popup__title_view-card');
 const imgCard = document.querySelector('.element__img');
 const titleCard = document.querySelector('.element__text');
+const popups = document.querySelectorAll('.popup');
 
-const validationConfig = ({
+const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__save-button',
   inactiveButtonClass: 'popup__save-button_inactive',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active'
-});
+};
 
 //функция для открытия попапа редактирования профиля 
 const openPopupEditProfile = (popupElementProfile) => {
@@ -45,7 +46,6 @@ const openPopupEditProfile = (popupElementProfile) => {
   nameInput.value = profileName.textContent; 
   jobInput.value = profileJob.textContent; 
 }
-
 
 //функции открытия и закрытия попапов
 function openPopup (currentPopup) {
@@ -57,6 +57,17 @@ function closePopup (currentPopup) {
   document.removeEventListener('keydown', closeByEsc);
 };
 
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_opened')) {
+          closePopup(popup);
+      };
+      if (evt.target.classList.contains('popup__close-button')) {
+        closePopup(popup);
+      };
+  });
+});
+
 // функции закрятия попапов по клику и нажатия по esc
 function closeByEsc (evt) {
   if (evt.key === 'Escape'){
@@ -64,16 +75,8 @@ function closeByEsc (evt) {
     closePopup(openedPopup);
   };
 };
-
-function closeByClick (evt) {
-  if (evt.target.classList.contains('popup')) {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup);
-  };
-};
-
 const handleClickOpen = (currentPopup) => () => openPopup(currentPopup);
-const handleClickClose = (currentPopup) => () => closePopup(currentPopup);
+
 //функция для лайка
 const likeCard = (event) => {
   event.target.classList.toggle('element__button-like_active');
@@ -117,24 +120,26 @@ function createCard (name, link) {
   return card;
 };
 
+function disableButton(buttonElement) {
+  buttonElement.disabled = true;
+  buttonElement.classList.add(validationConfig.inactiveButtonClass);
+}
+
+
 //функция добавления карточки
 const addCard = (event) => {
   event.preventDefault();
   const newCard = createCard(placeInput.value, linkInput.value);
+  const buttonElement = formElementAddCard.querySelector('.popup__save-button');
 
   cardContainer.prepend(newCard);
-  formElementAddCard.reset();  
+  formElementAddCard.reset();
+  disableButton(buttonElement);
   closePopup(popupElementCard);
 };
 
 // Добавляю слушатели событий на кнопки открытия/закрытия попапа и отправки формы
-editButton.addEventListener('click', () => openPopupEditProfile(popupElementProfile)); 
-closeButtonPopupEditProfile.addEventListener('click', handleClickClose(popupElementProfile)); 
-formElementProfile.addEventListener('submit', handleProfileFormSubmit); 
-formElementAddCard.addEventListener('submit', addCard); 
-addButton.addEventListener('click', handleClickOpen(popupElementCard)); 
-closeButtonPopupAddCard.addEventListener('click', handleClickClose(popupElementCard)); 
-closeButtonPopupViewCard.addEventListener('click', handleClickClose(popupView));
-popupElementProfile.addEventListener('click', closeByClick);
-popupElementCard.addEventListener('click', closeByClick);
-popupView.addEventListener('click', closeByClick);
+editButton.addEventListener('click', () => openPopupEditProfile(popupElementProfile));
+addButton.addEventListener('click', handleClickOpen(popupElementCard));
+formElementProfile.addEventListener('submit', handleProfileFormSubmit);
+formElementAddCard.addEventListener('submit', addCard);
