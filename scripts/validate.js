@@ -1,7 +1,7 @@
 const enableValidation = (settings) => {
 
 //функция которая показывает ошибку
-const showInputError = ({ formElement, inputElement, errorMessage }) => {
+const showInputError = (formElement, inputElement, errorMessage) => {
     // Находим элемент ошибки внутри самой функции
     const errorElement = formElement.querySelector(`.${inputElement.name}-input-error`);
     
@@ -11,7 +11,7 @@ const showInputError = ({ formElement, inputElement, errorMessage }) => {
   };
 
 //функция скрывает ошибку 
-const hideInputError = ({ formElement, inputElement }) => {
+const hideInputError = (formElement, inputElement) => {
     // Находим элемент ошибки
     const errorElement = formElement.querySelector(`.${inputElement.name}-input-error`);
 
@@ -21,7 +21,7 @@ const hideInputError = ({ formElement, inputElement }) => {
   };
 
 //функция которая проверяет валидна ли форма
-const isValid = ({ formElement, inputElement }) => {
+const isValid = (formElement, inputElement) => {
     if (!inputElement.validity.valid) {
 //если поле не валидно, показывает ошибку
       showInputError(formElement, inputElement, inputElement.validationMessage);
@@ -55,7 +55,7 @@ const toggleButtonState = (inputList, buttonElement) => {
     };
   };
 
- const setEventListeners = ({ formElement }) => {
+ const setEventListeners = (formElement) => {
     // Находим все поля внутри формы, и делаем из них массив
     const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
 
