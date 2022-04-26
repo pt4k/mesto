@@ -45,7 +45,7 @@ const openPopupEditProfile = (popupElementProfile) => {
 
   nameInput.value = profileName.textContent; 
   jobInput.value = profileJob.textContent; 
-}
+};
 
 //функции открытия и закрытия попапов
 function openPopup (currentPopup) {
@@ -123,7 +123,7 @@ function createCard (name, link) {
 function disableButton(buttonElement) {
   buttonElement.disabled = true;
   buttonElement.classList.add(validationConfig.inactiveButtonClass);
-}
+};
 
 
 //функция добавления карточки
