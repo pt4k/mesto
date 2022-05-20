@@ -1,13 +1,11 @@
 .popup__window {
-    max-width: 430px;
     position: relative;
+    background-color: white;
     display: flex;
     flex-direction: column;
-    background-color: #fff;
     border-radius: 10px;
-    margin: 0 auto;
+    margin: auto;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-
 }
 
 @media screen and (max-width: 540px) {

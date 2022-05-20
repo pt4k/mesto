@@ -1,4 +1,4 @@
-import { openPopup, popupView, titleViewCard, viewCard } from './index.js';
+import { openPopup, popupView, titleViewCard, viewCard } from './utils.js';
 
 export default class Card {
   constructor(data, cardSelector) {
@@ -42,6 +42,7 @@ export default class Card {
 
   _handleDeleteCard = () => {
     this._element.remove();
+    this._element = null;
   }
 
 
