@@ -7,20 +7,19 @@
     <meta name="description" content="Страница о местах в России">
     <meta name="keywords" content="Карачаевск, Эльбрус, Домбай">
     <meta name="author" content="Юрий Пищенко">
-    <link rel="stylesheet" href="./page/index.css">
     <title>Mesto</title>
 </head>
 
 <body class="page">
 
     <header class="header">
-        <img src="./images/Vector.svg" alt="Логотип Место" class="logo">
+        <img src="<%=require('./images/Vector.svg')%>" alt="Логотип Место" class="logo">
     </header>
 
     <main class="content">
 
         <section class="profile">
-            <img src="./images/zhak_iv_kusto.jpeg" alt="Аватар" class="profile__avatar">
+            <img src="<%=require('./images/zhak_iv_kusto.jpeg')%>" alt="Аватар" class="profile__avatar">
             <div class="profile__info">
                 <h1 class="profile__title">Жак-Ив Кусто</h1>
                 <p class="profile__text">Исследователь океана</p>
@@ -83,7 +82,5 @@
             </figcaption>
         </figure>
     </template>
-
-    <script type="module" src="./pages/index.js"></script>
 </body>
 </html>
