@@ -91,12 +91,6 @@ export default class FormValidator {
     };
     
     _setEventListeners = () => {
-      // Находим все поля внутри формы, и делаем из них массив
-      this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-      
-      // Найдём в текущей форме кнопку отправки
-      this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
-      
       // Вызовем toggleButtonState, чтобы не ждать ввода данных в поля
       this._toggleButtonState();
       

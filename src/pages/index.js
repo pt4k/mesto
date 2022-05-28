@@ -27,14 +27,13 @@ const createCard = (item) => {
 }
 
 const cardList = new Section({
-  items: initialCards, 
   renderer: (cardItem) => {
     const cardElement = createCard(cardItem);
     cardList.addItem(cardElement);
   }
 }, 
 '.elements');
-cardList.renderItems();
+cardList.renderItems(initialCards);
 
 const userInfo = new UserInfo({ userNameSelector: '.profile__title' ,userInfoSelector: '.profile__text' });
 
@@ -45,14 +44,9 @@ const popupFormProfile = new PopupWithForm({ handleProfileFormSubmit: (userData)
 },
 '.popup_edit_profile');
 
-const popupFormCard = new PopupWithForm ({ handleProfileFormSubmit: () => {
+const popupFormCard = new PopupWithForm ({ handleProfileFormSubmit: (inputData) => {
 
-  const newCard = { 
-    name: placeInput.value, 
-    link: linkInput.value
-  }
-
-  const cardElement = createCard(newCard);
+  const cardElement = createCard(inputData);
   cardList.addItem(cardElement);
 
   popupFormCard.close();
