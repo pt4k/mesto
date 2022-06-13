@@ -1,30 +1,3 @@
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -34,10 +7,11 @@ const validationConfig = {
   errorClass: 'popup__input-error_active'
 };
 
-
 //объявил переменные попапов
 const popupElementProfile = document.querySelector('.popup_edit_profile');
 const popupElementCard = document.querySelector('.popup_add_card');
+const popupDeleteCard = document.querySelector('.popup_delete_card');
+const popupElementAvatar = document.querySelector('.popup_edit_avatar');
 // объявил переменные для кнопок открытия попапов
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
@@ -45,20 +19,23 @@ const addButton = document.querySelector('.profile__add-button');
 const formElementProfile = document.querySelector('.popup__form_type_profile');
 const nameInput = formElementProfile.querySelector('.popup__input_el_first-name');
 const jobInput = formElementProfile.querySelector('.popup__input_el_about');
-//объявил переменные для полей формы ('место' и 'ссылка') 
-const formElementAddCard = document.querySelector('.popup__form_type_card');
-const placeInput = formElementAddCard.querySelector('.popup__input_el_place');
-const linkInput = formElementAddCard.querySelector('.popup__input_el_link');
+
+const profileName = document.querySelector('.profile__title');
+const profilleJob = document.querySelector('.profile__text');
+const profileAvatar = document.querySelector('.profile__avatar');
+ 
 
 export { 
-  initialCards,
   validationConfig,
   popupElementProfile,
   popupElementCard,
+  popupElementAvatar,
+  popupDeleteCard,
   editButton,
   addButton,
   nameInput,
   jobInput,
-  placeInput,
-  linkInput,
+  profileName,
+  profilleJob,
+  profileAvatar
 };

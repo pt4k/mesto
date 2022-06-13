@@ -19,10 +19,13 @@
     <main class="content">
 
         <section class="profile">
-            <img src="<%=require('./images/zhak_iv_kusto.jpeg')%>" alt="Аватар" class="profile__avatar">
+            <div class="profile__avatar-overlay">
+                <img src="../src/images/pencil.png" alt="">
+                <img src="" alt="Аватар" class="profile__avatar">
+            </div>
             <div class="profile__info">
-                <h1 class="profile__title">Жак-Ив Кусто</h1>
-                <p class="profile__text">Исследователь океана</p>
+                <h1 class="profile__title"></h1>
+                <p class="profile__text"></p>
                 <button class="profile__edit-button" type="button"></button>
             </div>
             <button aria-label="add" class="profile__add-button" type="button"></button>
@@ -49,7 +52,7 @@
     <div class="popup popup_add_card">
         <div class="popup__window">
             <h2 class="popup__title">Новое место</h2> 
-            <button class="popup__close-button popup__close-button_add_card" type="button" aria-label="add"></button>
+            <button class="popup__close-button popup__close-button_add_card" type="button" aria-label="close"></button>
             <form class="popup__form popup__form_type_card" name="popupForm" novalidate>
                 <input class="popup__input popup__input_el_place" type="text" name="name" placeholder="Название" minlength="2" maxlength="30" required>
                 <span class="popup__input-error name-input-error"></span>
@@ -62,9 +65,30 @@
 
     <div class="popup popup_view_card">
         <div class="popup__window popup__window_view-card">
-            <button class="popup__close-button popup__close-button_view_card" type="button" aria-label="add"></button>
+            <button class="popup__close-button popup__close-button_view_card" type="button" aria-label="close"></button>
             <img src="#" alt="" class="popup__img popup__img_view-card">
             <h2 class="popup__title popup__title_view-card"></h2> 
+        </div>
+    </div>
+    
+    <div class="popup popup_delete_card">
+        <div class="popup__window popup__window_delete-card">
+            <button class="popup__close-button popup__close-button_delete_card" type="button" aria-label="close"></button>
+            <form action="" class="popup__form">
+                <h2 class="popup__title popup__title_view-card">Вы уверены?</h2>
+                <button class="popup__save-button" type="submit">Да</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup popup_edit_avatar">
+        <div class="popup__window">
+            <button class="popup__close-button popup__close-button_edit_avatar" type="button" aria-label="close"></button>
+            <form class="popup__form popup__form_type_avatar" name="popupForm" novalidate>
+                <input class="popup__input popup__input_el_avatar" type="text" name="avatar" placeholder="Аватар" minlength="2" maxlength="200" required>
+                <span class="popup__input-error avatar-input-error"></span>
+                <button class="popup__save-button" type="submit">Сохранить</button>
+            </form>
         </div>
     </div>
 
@@ -78,7 +102,10 @@
             <img src="#" alt="" class="element__img">
             <figcaption class="element__caption">
                 <h2 class="element__text"></h2>
-                <button class="element__button-like" type="button" aria-label="like"></button>
+                <div class="element__like">
+                    <button class="element__button-like" type="button" aria-label="like"></button>
+                    <p class="element__like-counter"></p>
+                </div>
             </figcaption>
         </figure>
     </template>

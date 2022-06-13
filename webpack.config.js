@@ -20,11 +20,12 @@ module.exports = {
     port: 8080
   },
   module: {
-    rules: [{
+    rules: [
+      /*{
       test: /\.js$/,
       use: 'babel-loader',
       exclude: '/node_modules/'
-    },
+    }*/
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
         type: 'asset/resource',
