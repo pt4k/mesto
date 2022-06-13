@@ -34,7 +34,7 @@ export default class Api {
     addNewCard(newCard) {
         return fetch(this._baseUrl + '/cards/', {
             method: 'POST',
-            header: this._headers,
+            headers: this._headers,
             body: JSON.stringify({
                 name: newCard.name,
                 link: newCard.link
@@ -44,10 +44,10 @@ export default class Api {
     }
 
     //метод удаления карточки
-    deleteCard(cadrId) {
-        return fetch(this._baseUrl + '/cards/' + `${cadrId}`, {
-          method: `DELETE`,
-          header: this._headers
+    deleteCard(cardId) {
+        return fetch(this._baseUrl + '/cards/' + `${cardId}`, {
+          method: 'DELETE',
+          headers: this._headers
         })
         .then(this._handleResponse)
     }
@@ -56,9 +56,9 @@ export default class Api {
     patchUserInfo(userInfo) {
         return fetch(this._baseUrl + '/users/me', {
             method: 'PATCH',
-            header: this._headers,
+            headers: this._headers,
             body: JSON.stringify({
-                name: userInfo.name,
+                name: userInfo.firstname,
                 about: userInfo.about
             }),
         })
@@ -69,7 +69,7 @@ export default class Api {
     pathUserAvatar(userAvatar) {
         return fetch(this._baseUrl + '/users/me/avatar', {
             method: 'PATCH',
-            header: this._headers,
+            headers: this._headers,
             body: JSON.stringify({
                 avatar: userAvatar.avatar
             }),
@@ -81,7 +81,7 @@ export default class Api {
     handleLikeCard(cardId) {
         return fetch(this._baseUrl + '/cards/likes/' + `${cardId}`, {
             method: 'PUT',
-            header: this._headers,
+            headers: this._headers,
         })
         .then(this._handleResponse)
     }
@@ -90,12 +90,8 @@ export default class Api {
     handleDislikeCard(cardId) {
         return fetch(this._baseUrl + '/cards/likes/' + `${cardId}`, {
             method: 'DELETE',
-            header: this._headers,
+            headers: this._headers,
         })
         .then(this._handleResponse)
     }
 }
-
-    /*getInitialData() {
-        return Promise.all([this.getInitialCards(), this.getUserInfo()])
-    }*/

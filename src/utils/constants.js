@@ -21,7 +21,7 @@ const nameInput = formElementProfile.querySelector('.popup__input_el_first-name'
 const jobInput = formElementProfile.querySelector('.popup__input_el_about');
 
 const profileName = document.querySelector('.profile__title');
-const profilleJob = document.querySelector('.profile__text');
+const profileJob = document.querySelector('.profile__text');
 const profileAvatar = document.querySelector('.profile__avatar');
  
 
@@ -36,6 +36,6 @@ export {
   nameInput,
   jobInput,
   profileName,
-  profilleJob,
+  profileJob,
   profileAvatar
 };

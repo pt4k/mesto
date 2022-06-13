@@ -9,7 +9,7 @@ import {
   nameInput,
   jobInput,
   profileName,
-  profilleJob,
+  profileJob,
   profileAvatar
 } from '../utils/constants.js';
 import Card from '../components/Сard.js';
@@ -39,14 +39,8 @@ const userInfo = new UserInfo({ userNameSelector: '.profile__title' ,userInfoSel
 Promise.all([api.getUserInfo(), api.getInitialCards()])
 .then((res) => {
 
-  console.log(res);
-  console.log(res[0].name);
-  console.log(res[0].about);
-  console.log(res[0].avatar);
-  console.log(res[0]._id);
-
   profileName.textContent = res[0].name;
-  profilleJob.textContent = res[0].about;
+  profileJob.textContent = res[0].about;
   profileAvatar.src =res[0].avatar;
   userId = res[0]._id;
   cardList.renderItems(res[1]);
@@ -72,8 +66,8 @@ const createCard = (item) => {
       cardSelector: '.card-template_type_default',
       userId: userId,
       
-      handleCardClick: (imgInfo) => {
-        popupViewCard.open(imgInfo.name, imgInfo.link);
+      handleCardClick: (name, link) => {
+        popupViewCard.open({name, link});
       },
 
       handleLikeClick: (item) => {
@@ -93,7 +87,12 @@ const createCard = (item) => {
         .catch((err) => {
           console.log(err);
         })
-      }}
+      }},
+
+      handleDeleteIconClick: (data) => {
+        popupDeleteCard.open(data);
+        console.log(data)
+      }
 
     });
     
@@ -106,11 +105,9 @@ const popupFormProfile = new PopupWithForm({ handleProfileFormSubmit: (userData)
   popupFormProfile.renderLoading(true);
 
   api.patchUserInfo(userData)
-  .then((data) =>{
-    userInfo.setUserInfo({
-      name: data.name,
-      about: data.about
-    });
+  .then((userData) => {
+      profileName.textContent = userData.name,
+      profileJob.textContent = userData.about
   })
   .catch((err) => {
     console.log(err);
@@ -131,8 +128,9 @@ const popupFormAvatar = new PopupWithForm ({ handleProfileFormSubmit: (inputData
   popupFormAvatar.renderLoading(true);
   
   api.pathUserAvatar(inputData)
-  .then((data) => {
-    userInfo.setUserAvatar(data);
+  
+  .then((inputData) => {
+    profileAvatar.src = inputData.avatar;
   })
   .catch((err) => {
     console.log(err);
@@ -153,7 +151,7 @@ const popupFormCard = new PopupWithForm ({ handleProfileFormSubmit: (inputData) 
   popupFormCard.renderLoading(true);
 
   const newCard = {
-    name: inputData.place,
+    name: inputData.name,
     link: inputData.link
   }
 
@@ -183,16 +181,19 @@ const popupViewCard = new PopupWithImage ('.popup_view_card');
 //попап удаления карточки 
 const popupDeleteCard = new PopupWithSubmit ({ 
   handleProfileFormSubmit: (data) => {
-    popupDeleteCard.renderLoading(true);
-    api.deleteCard(data._id)
+    popupDeleteCard.setSubmitHandler(data);
+    
+    //popupDeleteCard.renderLoading(true);
+    console.log(data);
+    api.deleteCard(cardId)
     .then(() => {
-      data.deleteCard()
+      data.deleteCard();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      popupDeleteCard.renderLoading(false);
+      //popupDeleteCard.renderLoading(false);
     })
     .then(() => {
       popupDeleteCard.close()
@@ -211,7 +212,6 @@ editButton.addEventListener('click', () => {
 
   popupFormProfile.open();
 });
-console.log(editButton);
 
 addButton.addEventListener('click', () => {
   formAddCardValidator.disableButton();
@@ -219,8 +219,8 @@ addButton.addEventListener('click', () => {
 });
 
 profileAvatar.addEventListener('click', () => {
-  popupFormAvatar.resetForm();
-  popupFormAvatar.disableButton();
+  formAvatarValidator.resetFormValidation();
+  formAvatarValidator.disableButton();
   popupFormAvatar.open();
 });
 
@@ -238,60 +238,3 @@ const formAddCardValidator = new FormValidator(validationConfig, popupElementCar
 formAddCardValidator.enableValidation();
 const formAvatarValidator = new FormValidator(validationConfig, popupElementAvatar);
 formAvatarValidator.enableValidation();
-
-
-
-/*api.getInitialData()
-.then(promises => {
-  const [ cardsPromise, userPromise ] = promises;
-  const userId = userPromise._id;
-  
-  cardList.renderItems(cardsPromise);
-})
-.catch((err) => {
-  console.log(`Ошибка запроса данных с сервера ${err}`);
-});*/
-
-/*api.getUserInfo()
-.then((result) => {
-
-  profileName.textContent = result.name;
-  profilleJob.textContent = result.about;
-  profileAvatar.src = result.avatar;
-})
-.catch((err) => {
-  console.log(err);
-});*/
-
-/*api.getInitialCards()
-.then((result) => {
-  cardList.renderItems(result);
-})
-.catch((err) => {
-  console.log(err);
-});*/
-
-/*fetch('https://mesto.nomoreparties.co/v1/cohort-42/cards', {
-  method: 'POST',
-  headers: {
-    authorization: 'e5a37e81-cb9a-4a0e-bacc-f2b0bcf5bc25',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    name: 'Ferrari F1-91',
-    link: 'https://cdn-1.motorsport.com/images/amp/0oKpa5b0/s1200/f1-portuguese-gp-1991-jean-ale.webp'
-  })
-});*/
-
-/*const createCard = (item) => {
-  const card = new Card(item, '.card-template_type_default', {handleCardClick: () => {
-    popupViewCard.open(item);
-  }});
-  return card.generateCard();
-}*/
-
-  /*userInfo.setUserInfo({
-    name: res[0].name,
-    about: res[0].about,
-    avatar: res[0].avatar
-  });*/
