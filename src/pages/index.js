@@ -8,8 +8,6 @@ import {
   addButton,
   nameInput,
   jobInput,
-  profileName,
-  profileJob,
   profileAvatar
 } from '../utils/constants.js';
 import Card from '../components/Сard.js';
@@ -38,10 +36,11 @@ const userInfo = new UserInfo({ userNameSelector: '.profile__title' ,userInfoSel
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
 .then((res) => {
-
-  profileName.textContent = res[0].name;
-  profileJob.textContent = res[0].about;
-  profileAvatar.src =res[0].avatar;
+  userInfo.setUserInfo({
+    firstname: res[0].name,
+    about: res[0].about,
+    avatar: res[0].avatar
+  });
   userId = res[0]._id;
   cardList.renderItems(res[1]);
 })
@@ -91,7 +90,6 @@ const createCard = (item) => {
 
       handleDeleteIconClick: (data) => {
         popupDeleteCard.open(data);
-        console.log(data)
       }
 
     });
@@ -103,11 +101,13 @@ const createCard = (item) => {
 //попап изменения информации о пользователи
 const popupFormProfile = new PopupWithForm({ handleProfileFormSubmit: (userData) => { 
   popupFormProfile.renderLoading(true);
-
   api.patchUserInfo(userData)
   .then((userData) => {
-      profileName.textContent = userData.name,
-      profileJob.textContent = userData.about
+    userInfo.setUserInfo({
+      firstname: userData.name,
+      about: userData.about,
+      avatar: userData.avatar
+  });
   })
   .catch((err) => {
     console.log(err);
@@ -128,9 +128,8 @@ const popupFormAvatar = new PopupWithForm ({ handleProfileFormSubmit: (inputData
   popupFormAvatar.renderLoading(true);
   
   api.pathUserAvatar(inputData)
-  
-  .then((inputData) => {
-    profileAvatar.src = inputData.avatar;
+  .then((data) => {
+    userInfo.setUserAvatar(data);
   })
   .catch((err) => {
     console.log(err);
@@ -181,19 +180,17 @@ const popupViewCard = new PopupWithImage ('.popup_view_card');
 //попап удаления карточки 
 const popupDeleteCard = new PopupWithSubmit ({ 
   handleProfileFormSubmit: (data) => {
-    popupDeleteCard.setSubmitHandler(data);
+    popupDeleteCard.renderLoading(true);
     
-    //popupDeleteCard.renderLoading(true);
-    console.log(data);
-    api.deleteCard(cardId)
+    api.deleteCard(data._id)
     .then(() => {
-      data.deleteCard();
+      data.cardDelete();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      //popupDeleteCard.renderLoading(false);
+      popupDeleteCard.renderLoading(false);
     })
     .then(() => {
       popupDeleteCard.close()

@@ -66,12 +66,12 @@ export default class Api {
     }
 
     //редактирование аватара
-    pathUserAvatar(userAvatar) {
+    pathUserAvatar(userInfo) {
         return fetch(this._baseUrl + '/users/me/avatar', {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                avatar: userAvatar.avatar
+                avatar: userInfo.avatar
             }),
         })
         .then(this._handleResponse)

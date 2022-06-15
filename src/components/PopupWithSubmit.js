@@ -6,8 +6,8 @@ export default class PopupWithSubmit extends Popup {
         this._handleProfileFormSubmit = handleProfileFormSubmit;
         
         this._form = this._popup.querySelector('.popup__form');
-        this._submitButton = this._popup.querySelector('.popup__save-button');
-        this._submitButtonValue = this._submitButton.textContent;
+        this._saveButton = this._popup.querySelector('.popup__save-button');
+        this._saveButtonValue = this._saveButton.textContent;
     }
 
     open(data) {
@@ -17,11 +17,6 @@ export default class PopupWithSubmit extends Popup {
 
     close() {
         super.close();
-        this._form.reset;
-    }
-
-    setSubmitHandler(cardId) {
-        this.card = cardId;
     }
 
     setEventListeners() {
@@ -30,15 +25,15 @@ export default class PopupWithSubmit extends Popup {
         this._form.addEventListener('submit', (evt) => {
             evt.preventDefault();
 
-            this._handleProfileFormSubmit(this.card);
+            this._handleProfileFormSubmit(this._data);
         });
     }
 
-    /*renderLoading(isLoad) {
+    renderLoading(isLoad) {
         if (isLoad) {
             this._saveButton.textContent = 'Удаление...';
         } else {
             this._saveButton.textContent = this._saveButtonValue;
         }
-    }*/
+    }
 }

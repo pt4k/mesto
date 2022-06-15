@@ -20,8 +20,7 @@ const formElementProfile = document.querySelector('.popup__form_type_profile');
 const nameInput = formElementProfile.querySelector('.popup__input_el_first-name');
 const jobInput = formElementProfile.querySelector('.popup__input_el_about');
 
-const profileName = document.querySelector('.profile__title');
-const profileJob = document.querySelector('.profile__text');
+
 const profileAvatar = document.querySelector('.profile__avatar');
  
 
@@ -30,12 +29,9 @@ export {
   popupElementProfile,
   popupElementCard,
   popupElementAvatar,
-  popupDeleteCard,
   editButton,
   addButton,
   nameInput,
   jobInput,
-  profileName,
-  profileJob,
   profileAvatar
 };

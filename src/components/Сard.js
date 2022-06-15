@@ -52,9 +52,9 @@ export default class Card {
 
   _handleLikes() {
     if (this.isLiked()) {
-      this._likeButton.classList.add('.button-like_active');
+      this._likeButton.classList.add('element__button-like_active');
     } else {
-      this._likeButton.classList.remove('.button-like_active');
+      this._likeButton.classList.remove('element__button-like_active');
     }
   }
 
