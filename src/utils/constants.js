@@ -10,7 +10,6 @@ const validationConfig = {
 //объявил переменные попапов
 const popupElementProfile = document.querySelector('.popup_edit_profile');
 const popupElementCard = document.querySelector('.popup_add_card');
-const popupDeleteCard = document.querySelector('.popup_delete_card');
 const popupElementAvatar = document.querySelector('.popup_edit_avatar');
 // объявил переменные для кнопок открытия попапов
 const editButton = document.querySelector('.profile__edit-button');
